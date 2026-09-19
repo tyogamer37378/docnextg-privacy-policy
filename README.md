@@ -12,7 +12,7 @@ This repository hosts the official, public-facing Privacy Policy for **DocNextG*
 * **Package / Application ID**: `com.polyforge.magicpage`
 * **Target Version**: `0.1.0` (Version Code `1`)
 * **Effective Date**: September 20, 2026
-* **Support Email**: `support@polyforge.app`
+* **Support Contact**: [To be provided upon official release / Refer to Google Play listing]
 
 ---
 
@@ -36,5 +36,4 @@ This repository hosts the official, public-facing Privacy Policy for **DocNextG*
 ---
 
 ## Contact
-For questions or privacy inquiries regarding DocNextG:  
-**Email**: [support@polyforge.app](mailto:support@polyforge.app)
+For questions or privacy inquiries regarding DocNextG, please refer to the official developer contact information published on the Google Play Store listing.
