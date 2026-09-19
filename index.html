@@ -20,6 +20,8 @@
             --success-light: #ecfdf5;
             --warning-color: #d97706;
             --warning-light: #fffbeb;
+            --info-color: #0284c7;
+            --info-light: #f0f9ff;
             --radius-sm: 6px;
             --radius-md: 10px;
             --radius-lg: 16px;
@@ -44,6 +46,8 @@
                 --success-light: rgba(16, 185, 129, 0.12);
                 --warning-color: #f59e0b;
                 --warning-light: rgba(245, 158, 11, 0.12);
+                --info-color: #38bdf8;
+                --info-light: rgba(56, 189, 248, 0.12);
             }
         }
 
@@ -164,6 +168,10 @@
 
         .highlight-card.notice {
             border-top: 3px solid var(--warning-color);
+        }
+
+        .highlight-card.info {
+            border-top: 3px solid var(--info-color);
         }
 
         .highlight-card h4 {
@@ -342,7 +350,7 @@
 
     <div class="summary-box">
         <h3>Privacy Architecture Summary</h3>
-        <p>DocNextG is built around a private, <strong>on-device document processing model</strong>. All document scanning, camera frames, imported photos, optical character recognition (OCR), and PDF file operations take place locally on your Android device. The application does not upload your documents to any cloud servers. The only off-device network communication consists of operational diagnostics transmitted by bundled Google ML Kit client libraries to maintain SDK reliability.</p>
+        <p>DocNextG is built around a private, <strong>on-device document processing model</strong>. All camera captures, document scanning, perspective correction, optical character recognition (OCR), and PDF file operations take place locally on your Android device. The application does not operate cloud document servers, and your documents, extracted text, and files are <strong>never uploaded to our servers</strong>.</p>
     </div>
 
     <div class="highlight-grid">
@@ -352,11 +360,11 @@
         </div>
         <div class="highlight-card notice">
             <h4>Disclosed SDK Telemetry</h4>
-            <p>Bundled Google ML Kit dependencies transmit technical SDK performance metrics, API execution latency, error codes, and device info to Google infrastructure.</p>
+            <p>Bundled Google ML Kit client dependencies transmit technical SDK performance metrics, API execution latency, error codes, and device metadata to Google infrastructure.</p>
         </div>
-        <div class="highlight-card safe">
-            <h4>No Accounts & No Ads</h4>
-            <p>DocNextG requires no login or user account. It contains zero advertising SDKs (No AdMob), no advertising tracking IDs, and no payment or billing SDKs.</p>
+        <div class="highlight-card info">
+            <h4>Planned Monetization Boundary</h4>
+            <p>When advertising or Pro subscriptions are enabled in an app release, ad networks and billing frameworks operate under strict isolation and never receive your document content.</p>
         </div>
     </div>
 
@@ -364,19 +372,19 @@
         <h2>Table of Contents</h2>
         <ol>
             <li><a href="#section-1">Introduction</a></li>
-            <li><a href="#section-2">Information Processed by DocNextG</a></li>
+            <li><a href="#section-2">Information Handled by DocNextG</a></li>
             <li><a href="#section-3">Camera and Document Scanning</a></li>
             <li><a href="#section-4">Imported Photos and Documents</a></li>
             <li><a href="#section-5">Optical Character Recognition (OCR)</a></li>
             <li><a href="#section-6">PDF Creation and Local Storage</a></li>
             <li><a href="#section-7">QR Code and Barcode Processing</a></li>
-            <li><a href="#section-8">Local Backup and Restore</a></li>
+            <li><a href="#section-8">Local Backup and Disaster Recovery</a></li>
             <li><a href="#section-9">User-Initiated Sharing and Export</a></li>
-            <li><a href="#section-10">Google ML Kit SDK Diagnostics & Telemetry</a></li>
-            <li><a href="#section-11">Network Communications</a></li>
-            <li><a href="#section-12">Data Storage</a></li>
-            <li><a href="#section-13">Data Deletion</a></li>
-            <li><a href="#section-14">Security</a></li>
+            <li><a href="#section-10">Advertising and Premium Subscriptions</a></li>
+            <li><a href="#section-11">Strict Document Privacy Boundary</a></li>
+            <li><a href="#section-12">SDK Diagnostics and Network Communications</a></li>
+            <li><a href="#section-13">Data Storage and Security</a></li>
+            <li><a href="#section-14">Data Retention and Deletion</a></li>
             <li><a href="#section-15">Third-Party Services and SDKs</a></li>
             <li><a href="#section-16">Children's Privacy</a></li>
             <li><a href="#section-17">Changes to This Privacy Policy</a></li>
@@ -386,38 +394,39 @@
 
     <section id="section-1">
         <h2>1. Introduction</h2>
-        <p>This Privacy Policy explains how <strong>DocNextG</strong> (package name: <code>com.polyforge.magicpage</code>) processes, handles, and protects information when you use our mobile document scanning application on Android devices.</p>
-        <p>DocNextG is engineered with a strict on-device data processing philosophy. We believe that your sensitive documents, contracts, receipts, and personal files belong exclusively to you. We do not operate a cloud document processing infrastructure or remote storage servers for your files. This document details our data handling practices and openly discloses the technical operational telemetry transmitted by third-party SDK components bundled within the application.</p>
+        <p>This Privacy Policy explains how <strong>DocNextG</strong> (package name: <code>com.polyforge.magicpage</code>), developed and published by PolyForge, processes, handles, and protects information across Android devices.</p>
+        <p>DocNextG operates under a strict privacy-first standard: your sensitive contracts, receipts, identity documents, and personal files belong exclusively to you. We do not operate a remote document processing cloud or harvest personal files. This document outlines our on-device data handling practices, discloses the technical operational telemetry transmitted by bundled SDK client components, and describes the data handling associated with planned advertising and subscription features when enabled.</p>
     </section>
 
     <section id="section-2">
-        <h2>2. Information Processed by DocNextG</h2>
-        <p>To deliver document scanning, text recognition, and PDF utility features, DocNextG processes information in two separate categories:</p>
+        <h2>2. Information Handled by DocNextG</h2>
+        <p>To deliver document scanning, text recognition, and file management, data handling is structured into distinct categories:</p>
         <ul>
-            <li><strong>User Document Content (Processed & Stored 100% On-Device):</strong> Camera preview frames, captured document photos, gallery-imported images, perspective-cropped pages, extracted OCR text strings, generated PDF files, scanned QR/barcode payloads, Room SQLite database records (document titles, page counts, folder tags), and local backup archives (<code>.mpbak</code>).</li>
-            <li><strong>SDK Operational Telemetry (Transmitted Off-Device to Google):</strong> Technical performance data, API execution latency measurements, error codes, device hardware specifications (model, manufacturer), Android OS build version, application version code (<code>1</code>), and an ephemeral installation identifier (<code>instance_id</code>) generated by Google ML Kit client components.</li>
+            <li><strong>User Document Content (Processed &amp; Stored 100% On-Device):</strong> Camera preview frames, captured document photos, gallery-imported images, perspective-cropped pages, extracted OCR text strings, generated PDF files, scanned QR/barcode payloads, Room SQLite database records (document titles, page counts, folder tags), and local backup archives (<code>.mpbak</code>).</li>
+            <li><strong>SDK Operational Telemetry (Transmitted Off-Device to Google):</strong> Technical performance data, API execution latency measurements, error codes, device hardware specifications (model, manufacturer), Android OS build version, application version code (<code>1</code>), and an ephemeral installation identifier (<code>instance_id</code>) generated by bundled Google ML Kit client components.</li>
+            <li><strong>Planned Monetization Data (Active Only When Enabled in App Release):</strong> Advertising identifiers (Google Advertising ID / GAID), coarse IP address, and interaction diagnostics processed by Google Mobile Ads (AdMob) in ad-supported releases, and anonymous purchase tokens verified through Google Play Billing in Pro subscription releases.</li>
         </ul>
-        <p>DocNextG does <strong>not</strong> require, collect, or store personal identity profiles, usernames, passwords, phone numbers, email contact lists, or physical addresses. The application contains no login or user account system.</p>
+        <p>DocNextG does <strong>not</strong> require user accounts, email registration, passwords, or personal identity profiles to access document-scanning features.</p>
     </section>
 
     <section id="section-3">
         <h2>3. Camera and Document Scanning</h2>
-        <p>DocNextG requests access to your device camera (<code>android.permission.CAMERA</code>) solely to capture document images and scan barcodes.</p>
+        <p>DocNextG requests runtime access to the device camera (<code>android.permission.CAMERA</code>) solely when you initiate document capture, ID card scanning, or QR code reading.</p>
         <ul>
             <li>Camera preview frames are analyzed in real time directly on your device using native OpenCV and Android Jetpack CameraX libraries for automated edge detection, document boundary alignment, and perspective correction.</li>
-            <li>Live camera frames remain transiently in memory and are discarded immediately upon frame processing.</li>
-            <li>An image is only saved to storage when you explicitly trigger the camera shutter or confirm an automated scan capture.</li>
-            <li>Camera captures and live viewfinder streams are <strong>never</strong> transmitted over the network by DocNextG.</li>
+            <li>Live camera frames remain transiently in memory and are discarded immediately upon boundary calculation.</li>
+            <li>An image is only committed to storage when you explicitly tap the camera shutter or confirm an automated scan capture.</li>
+            <li>Camera captures and live viewfinder streams are <strong>never</strong> transmitted over the network.</li>
         </ul>
     </section>
 
     <section id="section-4">
         <h2>4. Imported Photos and Documents</h2>
-        <p>You may choose to import existing photographs from your device storage into DocNextG to create or supplement documents.</p>
+        <p>You may choose to import existing photographs from your device gallery into DocNextG to create or supplement multi-page documents.</p>
         <ul>
-            <li>DocNextG utilizes the modern Android system Photo Picker (<code>ActivityResultContracts.PickMultipleVisualMedia</code>). This system-managed dialog ensures that the application only accesses the specific images you explicitly select.</li>
+            <li>DocNextG utilizes the modern Android system Photo Picker (<code>ActivityResultContracts.PickMultipleVisualMedia</code>). This system-managed dialog ensures that the application only accesses the specific images you explicitly pick.</li>
             <li>DocNextG does not declare broad storage permissions such as <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code>. It has no access to your broader photo gallery or personal files.</li>
-            <li>Selected images are read into memory and copied directly to the application's private internal storage directory (<code>context.filesDir/images/</code>). Imported photos are never uploaded or transmitted off your device.</li>
+            <li>Selected images are copied directly to the application's private internal storage directory (<code>context.filesDir/images/</code>). Imported photos are never uploaded or transmitted off your device.</li>
         </ul>
     </section>
 
@@ -434,11 +443,11 @@
 
     <section id="section-6">
         <h2>6. PDF Creation and Local Storage</h2>
-        <p>DocNextG provides a comprehensive suite of PDF tools, including document generation, merging multiple PDFs, splitting pages, compression, and password protection.</p>
+        <p>DocNextG provides a comprehensive suite of PDF tools, including document compilation, merging multiple PDFs, splitting pages, compression, and password protection.</p>
         <ul>
             <li>All PDF rendering and compilation execute locally using on-device PDF processing libraries (<code>PdfBox-Android</code> and Android's native <code>PdfDocument</code> APIs).</li>
             <li>Generated PDFs and document thumbnails are stored in the application's private sandboxed internal directory (<code>context.filesDir</code> and <code>context.cacheDir</code>).</li>
-            <li>DocNextG does not provide or operate cloud document hosting, online synchronization, or remote document storage servers.</li>
+            <li>DocNextG does not operate cloud document hosting, online synchronization, or remote document storage servers.</li>
         </ul>
     </section>
 
@@ -447,18 +456,18 @@
         <p>DocNextG includes a QR code and barcode scanner powered by Google ML Kit's on-device barcode scanning library.</p>
         <ul>
             <li>Barcode pattern recognition and decoding execute locally on your device's camera preview frames.</li>
-            <li>Decoded content (such as plain text or numbers) is displayed on your screen. It is not saved to the database unless you explicitly save it as a document note.</li>
-            <li>If a scanned code contains an external web link, DocNextG sanitizes the URL through a strict scheme whitelist (allowing only <code>http://</code> and <code>https://</code>). The link is only opened in your device's default external browser if you explicitly tap to open it. DocNextG does not embed a web browser or track web browsing activity.</li>
+            <li>Decoded content is displayed on your screen. It is not saved to the database unless you explicitly save it as a document note.</li>
+            <li>If a scanned code contains an external web link, DocNextG sanitizes the URL through a strict scheme allowlist (allowing only <code>http://</code> and <code>https://</code>). The link is only opened in your device's default external browser upon an explicit user tap.</li>
         </ul>
     </section>
 
     <section id="section-8">
-        <h2>8. Local Backup and Restore</h2>
-        <p>DocNextG provides a local disaster-recovery backup tool allowing you to pack your document library and database records into an archive file (<code>.mpbak</code> / ZIP format).</p>
+        <h2>8. Local Backup and Disaster Recovery</h2>
+        <p>DocNextG provides an offline disaster-recovery backup tool allowing you to pack your document library and database records into an archive file (<code>.mpbak</code> / ZIP format).</p>
         <ul>
             <li>Backup archive creation and extraction execute 100% locally on your device using standard compression libraries.</li>
             <li>You control the destination of backup archives through Android's Storage Access Framework (SAF).</li>
-            <li><strong>No Cloud Sync:</strong> Backups stay strictly on your device. DocNextG does not operate automated cloud backup or Google Drive synchronization. To move an archive to another device or cloud drive, you must manually export or share the file yourself.</li>
+            <li><strong>No Cloud Sync:</strong> Backups stay strictly on your device. DocNextG does not operate automated cloud backup. Moving an archive to another device or cloud drive requires explicit user action.</li>
         </ul>
     </section>
 
@@ -467,125 +476,149 @@
         <p>Your documents, images, and backup archives leave the application's private sandbox <strong>only when you explicitly trigger an export or share action</strong>.</p>
         <ul>
             <li>When you share a document or PDF, DocNextG invokes the Android system Sharesheet via a secure <code>FileProvider</code> configuration.</li>
-            <li><code>FileProvider</code> grants temporary, read-only content URI permissions strictly for the specific file you choose to share with the recipient application you select (such as an email app, cloud drive app, or messenger).</li>
-            <li>DocNextG has no control over how third-party recipient apps handle data after you transfer files to them.</li>
+            <li><code>FileProvider</code> grants temporary, read-only content URI permissions strictly for the specific file you choose to share with the recipient application you select (such as an email client, cloud drive, or messenger).</li>
+            <li>Handling of exported files by third-party recipient applications is subject to those applications' respective privacy policies.</li>
         </ul>
     </section>
 
     <section id="section-10">
-        <h2>10. Google ML Kit SDK Diagnostics & Telemetry</h2>
-        <p>DocNextG integrates Google ML Kit client libraries to perform on-device text recognition and barcode scanning. These bundled libraries include Google's DataTransport subsystem (<code>transport-backend-cct</code>), which transmits technical operational telemetry to Google infrastructure (<code>play.googleapis.com</code>).</p>
+        <h2>10. Advertising and Premium Subscriptions</h2>
+        <p>DocNextG may offer advertising-supported free access and optional paid subscriptions. <strong>These features are only active when enabled in the applicable app release.</strong></p>
         
-        <h3>What Is Transmitted</h3>
-        <p>Independent bytecode analysis confirms that the data sent by the ML Kit telemetry transport is limited to technical diagnostic and operational metrics:</p>
+        <h3>Free Tier Advertising (Google Mobile Ads / AdMob — When Enabled)</h3>
+        <p>In releases where advertising is enabled:</p>
         <ul>
-            <li><strong>Diagnostic & Performance Metrics:</strong> Invocation counts, API execution duration (minimum, median, maximum latency), model load status, and technical error/status codes.</li>
-            <li><strong>Device & Application Metadata:</strong> Device hardware model, manufacturer, Android operating system build version, application version code (<code>1</code>), network connection type (Wi-Fi/cellular), and an anonymous per-installation UUID (<code>instance_id</code>).</li>
+            <li>The free version of DocNextG displays banner, interstitial, or native advertisements powered by Google Mobile Ads (AdMob).</li>
+            <li>Google AdMob may process device identifiers (such as the Google Advertising ID / GAID where permitted), coarse network IP address, and ad interaction diagnostics to serve ads, prevent fraud, and apply frequency caps.</li>
+            <li><strong>Advertisements never receive your camera frames, scanned document images, OCR text strings, or PDF documents.</strong></li>
         </ul>
 
-        <h3>What Is NOT Transmitted</h3>
-        <p><strong>Under no circumstances does this telemetry channel transmit document content.</strong> Independent audits of the application bytecode and network requests establish that:</p>
+        <h3>DocNextG Pro Subscriptions (Google Play Billing — When Enabled)</h3>
+        <p>In releases where subscription features are enabled:</p>
         <ul>
-            <li>Zero document images or camera pixels are transmitted.</li>
-            <li>Zero extracted OCR text strings are transmitted.</li>
-            <li>Zero document filenames, titles, or tags are transmitted.</li>
-            <li>Zero QR code or barcode payload values are transmitted.</li>
-            <li>Zero user account credentials or personal contact details are transmitted.</li>
+            <li>Users may optionally purchase a Pro subscription or lifetime license to remove all advertisements and access premium utility features.</li>
+            <li>Financial transactions, subscriptions, credit cards, and banking details are processed exclusively through Google Play's secure billing framework (Google Play Billing).</li>
+            <li>DocNextG <strong>never receives, stores, or processes credit card numbers, debit cards, bank details, or billing addresses</strong>.</li>
+            <li>DocNextG receives only anonymous purchase tokens and subscription entitlement status required to unlock Pro functionality on your device.</li>
         </ul>
-        <p>All telemetry data is transmitted using industry-standard encrypted network connections (HTTPS / TLS). Google processes this operational telemetry under standard Google API terms to monitor SDK performance, detect crashes, and maintain Google Play services reliability across Android devices.</p>
     </section>
 
     <section id="section-11">
-        <h2>11. Network Communications</h2>
-        <p>The compiled DocNextG release package includes <code>android.permission.INTERNET</code> and <code>android.permission.ACCESS_NETWORK_STATE</code> in its merged manifest, introduced by the bundled Google ML Kit client dependencies.</p>
+        <h2>11. Strict Document Privacy Boundary</h2>
+        <p>DocNextG maintains an absolute architectural boundary between user document content and third-party monetization or SDK services:</p>
         <ul>
-            <li>Network socket communications are used solely for the transmission of the third-party ML Kit SDK diagnostic telemetry disclosed in Section 10.</li>
-            <li>DocNextG does <strong>not</strong> make network calls for document synchronization, user tracking, advertising, analytics profiling, or cloud computation.</li>
-            <li>All core document features—including camera capture, edge cropping, OCR text recognition, PDF generation, PDF merging, and local backup—function completely without an active internet connection.</li>
+            <li><strong>Google Mobile Ads (AdMob)</strong> does <strong>not</strong> receive document images, OCR text, generated PDFs, or QR/barcode payloads.</li>
+            <li><strong>Google Play Billing</strong> does <strong>not</strong> receive document images, OCR text, PDFs, or QR payloads through the purchase flow.</li>
+            <li><strong>Google ML Kit</strong> processes document images and OCR text strictly in-memory on the device silicon; document content is never transmitted to Google cloud infrastructure.</li>
         </ul>
+        <p>Document content remains isolated within the local device sandbox regardless of whether the user is on the free tier or the Pro tier.</p>
     </section>
 
     <section id="section-12">
-        <h2>12. Data Storage</h2>
-        <p>All user document data, images, thumbnails, extracted text, and application settings are stored strictly in the private, sandboxed internal storage allocated to DocNextG by the Android operating system (<code>context.filesDir</code> and <code>context.cacheDir</code>).</p>
-        <p>Under Android's security architecture, sandboxed storage is isolated from other applications on the device. Other apps cannot read or access DocNextG files without your explicit user action through the system Sharesheet or Storage Access Framework.</p>
+        <h2>12. SDK Diagnostics and Network Communications</h2>
+        <p>The compiled DocNextG release package includes <code>android.permission.INTERNET</code> and <code>android.permission.ACCESS_NETWORK_STATE</code>:</p>
+        <ul>
+            <li><strong>Bundled ML Kit Diagnostics:</strong> Google ML Kit client dependencies include Google's DataTransport client (<code>transport-backend-cct</code>), which communicates with Google infrastructure (<code>play.googleapis.com</code>) to transmit operational telemetry (API duration, initialization states, error codes, device model, and anonymous installation IDs) to ensure SDK reliability.</li>
+            <li><strong>Monetization Communications (When Enabled):</strong> In releases with active monetization, network access supports fetching advertisements (via Google AdMob) and verifying purchase receipts (via Google Play Services).</li>
+            <li><strong>Zero Document Content Transmitted:</strong> Under no circumstances does any network communication transmit camera feeds, document images, OCR text strings, filenames, or user content. All core scanner utilities function completely without an active internet connection.</li>
+        </ul>
     </section>
 
     <section id="section-13">
-        <h2>13. Data Deletion</h2>
-        <p>DocNextG provides users with complete, immediate control over local data:</p>
+        <h2>13. Data Storage and Security</h2>
+        <p>We are committed to protecting your data through defensive engineering practices:</p>
         <ul>
-            <li><strong>In-App Deletion:</strong> You can permanently delete individual document pages, multi-page documents, or folders at any time directly within the application. When deleted, files are removed from the filesystem and database.</li>
-            <li><strong>Application Data Clearing & Uninstall:</strong> Clearing application storage via Android system settings (<code>Settings &gt; Apps &gt; DocNextG &gt; Storage &gt; Clear Storage / Clear Data</code>) or uninstalling the app permanently purges all stored documents, images, database records, and settings from your device.</li>
-            <li><strong>Telemetry Data:</strong> DocNextG does not maintain an account-based deletion mechanism for operational telemetry transmitted by bundled SDK components. Information about retention and processing of that telemetry is governed by the applicable SDK/provider documentation.</li>
+            <li><strong>Operating System Isolation:</strong> All documents, images, and database entries are stored in sandboxed internal directories (<code>context.filesDir</code>), isolated from other applications by the Android security framework.</li>
+            <li><strong>Directory Traversal Guards:</strong> Backup extraction tools validate relative file paths during decompression to protect against directory traversal exploits (Zip Slip).</li>
+            <li><strong>Decompression Safeguards:</strong> Archive extraction enforces hard size and byte limits to mitigate archive-based denial-of-service risks.</li>
+            <li><strong>Encrypted Transmission:</strong> All third-party SDK communications (ML Kit diagnostics, and future ad serving/billing verification) utilize HTTPS / TLS encryption in transit.</li>
         </ul>
     </section>
 
     <section id="section-14">
-        <h2>14. Security</h2>
-        <p>We are committed to protecting your data through defensive engineering practices:</p>
+        <h2>14. Data Retention and Deletion</h2>
+        <p>You retain complete control over your local data:</p>
         <ul>
-            <li><strong>Path Traversal Guards:</strong> Backup archive extraction strictly validates relative file paths to prevent directory traversal vulnerabilities (Zip Slip).</li>
-            <li><strong>Decompression Safeguards:</strong> Hard thresholds on archive size, entry counts, and decompressed bytes prevent Zip Bomb denial-of-service risks.</li>
-            <li><strong>Scoped Content Sharing:</strong> File sharing is restricted strictly to designated export subdirectories via Android's <code>FileProvider</code>, preventing exposure of internal database records.</li>
-            <li><strong>Safe URL Whitelisting:</strong> Scanned QR code payloads are validated to allow only standard <code>http</code> and <code>https</code> web links, blocking arbitrary intent or script execution.</li>
-            <li><strong>Encrypted Transport:</strong> All SDK telemetry communications utilize HTTPS/TLS encryption in transit.</li>
+            <li><strong>In-App Deletion:</strong> You can permanently delete individual pages, scans, or entire folders within the app at any time, immediately removing them from the filesystem and database.</li>
+            <li><strong>Complete App Reset:</strong> Clearing storage through system settings (<code>Settings &gt; Apps &gt; DocNextG &gt; Storage &gt; Clear Storage / Clear Data</code>) or uninstalling the app permanently purges all documents, database records, and settings from the hardware.</li>
+            <li><strong>Telemetry Data:</strong> DocNextG does not operate accounts or maintain an off-device database of operational telemetry. Retention and processing of operational telemetry and advertising data collected by third-party SDKs are governed by the applicable documentation and privacy policies of Google.</li>
         </ul>
     </section>
 
     <section id="section-15">
         <h2>15. Third-Party Services and SDKs</h2>
-        <p>The DocNextG release package bundles the following third-party software libraries:</p>
+        <p>The table below outlines third-party libraries integrated into or planned for DocNextG releases:</p>
         <table>
             <thead>
                 <tr>
                     <th>Library / SDK</th>
                     <th>Provider</th>
-                    <th>Purpose</th>
-                    <th>Data Handling</th>
+                    <th>Implementation Status</th>
+                    <th>Primary Purpose</th>
+                    <th>Data Handling &amp; Off-Device Transmission</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><strong>Google ML Kit</strong></td>
                     <td>Google LLC</td>
+                    <td><strong>Active in current release</strong></td>
                     <td>On-device OCR and Barcode Scanning</td>
-                    <td>Processes document images locally on-device. Transmits technical operational diagnostics and device metadata as described in Section 10.</td>
+                    <td>Executes locally on device hardware. Transmits operational latency and diagnostic device metadata to Google infrastructure. <strong>No document content is transmitted.</strong></td>
                 </tr>
                 <tr>
                     <td><strong>OpenCV Android SDK</strong></td>
                     <td>OpenCV Team</td>
-                    <td>Document edge detection & perspective crop</td>
-                    <td>Operates 100% on-device CPU/GPU. Zero network communication.</td>
+                    <td><strong>Active in current release</strong></td>
+                    <td>Edge detection &amp; perspective crop</td>
+                    <td>Executes 100% on-device (CPU/GPU). Performs <strong>zero network calls</strong>.</td>
                 </tr>
                 <tr>
                     <td><strong>PdfBox-Android</strong></td>
                     <td>Tom Roush / Apache</td>
-                    <td>PDF document generation and manipulation</td>
-                    <td>Operates 100% on-device. Zero network communication.</td>
+                    <td><strong>Active in current release</strong></td>
+                    <td>PDF generation, merging &amp; compression</td>
+                    <td>Executes 100% on-device. Performs <strong>zero network calls</strong>.</td>
+                </tr>
+                <tr>
+                    <td><strong>Google Mobile Ads (AdMob)</strong></td>
+                    <td>Google LLC</td>
+                    <td><strong>Planned / When enabled</strong></td>
+                    <td>In-app advertising (Free tier)</td>
+                    <td>When enabled, processes Advertising ID (GAID), coarse IP address, and ad interaction diagnostics for ad delivery and fraud prevention. <strong>Does not receive document content.</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Google Play Billing</strong></td>
+                    <td>Google LLC</td>
+                    <td><strong>Planned / When enabled</strong></td>
+                    <td>Pro subscription verification</td>
+                    <td>When enabled, verifies anonymous purchase tokens and subscription status via Google Play Services. <strong>No financial credentials are held by the app.</strong></td>
                 </tr>
             </tbody>
         </table>
-        <p><strong>Excluded Services:</strong> DocNextG does <strong>not</strong> integrate Google Analytics, Firebase Analytics, Crashlytics, Google AdMob, RevenueCat, Facebook Audience Network, or any advertising or third-party profiling trackers.</p>
+        <p><strong>Excluded Services:</strong> DocNextG does not integrate Facebook Audience Network, Firebase Analytics, commercial data broker SDKs, or third-party behavioral profiling trackers. Third-party subscription management SDKs (such as RevenueCat) are not bundled unless explicitly implemented in a verified future release.</p>
     </section>
 
     <section id="section-16">
         <h2>16. Children's Privacy</h2>
-        <p>DocNextG does not require users to create accounts or provide personal identity information to use its core document-scanning features. Document processing is performed locally on the user's device, and the application does not collect personal identity information.</p>
+        <p>DocNextG does not require users to create accounts or provide personal identity information to use its core document-scanning features. DocNextG does not knowingly collect personal identifiable information from children.</p>
+        <p>If you believe that a minor has provided personal information to third-party SDKs through our application, please contact us at <a href="mailto:support@polyforge.app" style="color: var(--accent-color);">support@polyforge.app</a>, and we will take prompt steps to address the inquiry.</p>
     </section>
 
     <section id="section-17">
         <h2>17. Changes to This Privacy Policy</h2>
-        <p>We may periodically update this Privacy Policy to reflect changes in our application features, underlying SDK components, or applicable legal and regulatory standards. When changes are made, the updated policy will be published on this page with a revised "Effective Date" at the top.</p>
+        <p>We may periodically update this Privacy Policy to reflect changes in application features, library dependencies, or evolving platform policies. When revisions are made, the updated document will be published at this location with a revised "Effective Date" at the top. Continued use of the application following policy updates constitutes acknowledgment of the revised terms.</p>
     </section>
 
     <section id="section-18">
         <h2>18. Contact Information</h2>
-        <p>If you have questions, inquiries, or feedback concerning this Privacy Policy or DocNextG's data handling practices, please contact us:</p>
+        <p>For inquiries, policy questions, or technical support regarding DocNextG's privacy architecture, please contact:</p>
         <div class="contact-card">
             <p><strong>Application:</strong> DocNextG</p>
             <p><strong>Package Name:</strong> <code>com.polyforge.magicpage</code></p>
+            <p><strong>Developer / Publisher:</strong> PolyForge</p>
             <p><strong>Support Email:</strong> <a href="mailto:support@polyforge.app" style="color: var(--accent-color); font-weight: 600;">support@polyforge.app</a></p>
+            <p><strong>Official Policy URL:</strong> <a href="https://tyogamer37378.github.io/docnextg-privacy-policy/" style="color: var(--accent-color);">https://tyogamer37378.github.io/docnextg-privacy-policy/</a></p>
         </div>
     </section>
 
