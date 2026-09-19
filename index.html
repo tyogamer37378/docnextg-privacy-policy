@@ -277,25 +277,41 @@
             color: var(--text-primary);
         }
 
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            background: var(--surface-color);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.88rem;
-            margin: 16px 0;
-            display: block;
-            overflow-x: auto;
+            min-width: 600px;
         }
 
         th, td {
             text-align: left;
-            padding: 10px 14px;
-            border: 1px solid var(--border-color);
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
             vertical-align: top;
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
 
         th {
             background-color: var(--bg-color);
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-primary);
         }
 
@@ -548,61 +564,63 @@
     <section id="section-15">
         <h2>15. Third-Party Services and SDKs</h2>
         <p>The table below outlines third-party libraries integrated into or planned for DocNextG releases:</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>Library / SDK</th>
-                    <th>Provider</th>
-                    <th>Implementation Status</th>
-                    <th>Primary Purpose</th>
-                    <th>Data Handling &amp; Off-Device Transmission</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Google ML Kit</strong></td>
-                    <td>Google LLC</td>
-                    <td><strong>Active in current release</strong></td>
-                    <td>On-device OCR and Barcode Scanning</td>
-                    <td>Executes locally on device hardware. Transmits operational latency and diagnostic device metadata to Google infrastructure. <strong>No document content is transmitted.</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>OpenCV Android SDK</strong></td>
-                    <td>OpenCV Team</td>
-                    <td><strong>Active in current release</strong></td>
-                    <td>Edge detection &amp; perspective crop</td>
-                    <td>Executes 100% on-device (CPU/GPU). Performs <strong>zero network calls</strong>.</td>
-                </tr>
-                <tr>
-                    <td><strong>PdfBox-Android</strong></td>
-                    <td>Tom Roush / Apache</td>
-                    <td><strong>Active in current release</strong></td>
-                    <td>PDF generation, merging &amp; compression</td>
-                    <td>Executes 100% on-device. Performs <strong>zero network calls</strong>.</td>
-                </tr>
-                <tr>
-                    <td><strong>Google Mobile Ads (AdMob)</strong></td>
-                    <td>Google LLC</td>
-                    <td><strong>Planned / When enabled</strong></td>
-                    <td>In-app advertising (Free tier)</td>
-                    <td>When enabled, processes Advertising ID (GAID), coarse IP address, and ad interaction diagnostics for ad delivery and fraud prevention. <strong>Does not receive document content.</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Google Play Billing</strong></td>
-                    <td>Google LLC</td>
-                    <td><strong>Planned / When enabled</strong></td>
-                    <td>Pro subscription verification</td>
-                    <td>When enabled, verifies anonymous purchase tokens and subscription status via Google Play Services. <strong>No financial credentials are held by the app.</strong></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Library / SDK</th>
+                        <th>Provider</th>
+                        <th>Implementation Status</th>
+                        <th>Primary Purpose</th>
+                        <th>Data Handling &amp; Off-Device Transmission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Google ML Kit</strong></td>
+                        <td>Google LLC</td>
+                        <td><strong>Active in current release</strong></td>
+                        <td>On-device OCR and Barcode Scanning</td>
+                        <td>Executes locally on device hardware. Transmits operational latency and diagnostic device metadata to Google infrastructure. <strong>No document content is transmitted.</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>OpenCV Android SDK</strong></td>
+                        <td>OpenCV Team</td>
+                        <td><strong>Active in current release</strong></td>
+                        <td>Edge detection &amp; perspective crop</td>
+                        <td>Executes 100% on-device (CPU/GPU). Performs <strong>zero network calls</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PdfBox-Android</strong></td>
+                        <td>Tom Roush / Apache</td>
+                        <td><strong>Active in current release</strong></td>
+                        <td>PDF generation, merging &amp; compression</td>
+                        <td>Executes 100% on-device. Performs <strong>zero network calls</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Mobile Ads (AdMob)</strong></td>
+                        <td>Google LLC</td>
+                        <td><strong>Planned / When enabled</strong></td>
+                        <td>In-app advertising (Free tier)</td>
+                        <td>When enabled, processes Advertising ID (GAID), coarse IP address, and ad interaction diagnostics for ad delivery and fraud prevention. <strong>Does not receive document content.</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Play Billing</strong></td>
+                        <td>Google LLC</td>
+                        <td><strong>Planned / When enabled</strong></td>
+                        <td>Pro subscription verification</td>
+                        <td>When enabled, verifies anonymous purchase tokens and subscription status via Google Play Services. <strong>No financial credentials are held by the app.</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <p><strong>Excluded Services:</strong> DocNextG does not integrate Facebook Audience Network, Firebase Analytics, commercial data broker SDKs, or third-party behavioral profiling trackers. Third-party subscription management SDKs (such as RevenueCat) are not bundled unless explicitly implemented in a verified future release.</p>
     </section>
 
     <section id="section-16">
         <h2>16. Children's Privacy</h2>
         <p>DocNextG does not require users to create accounts or provide personal identity information to use its core document-scanning features. DocNextG does not knowingly collect personal identifiable information from children.</p>
-        <p>If you believe that a minor has provided personal information to third-party SDKs through our application, please contact the developer via the official contact details on our Google Play Store listing, and we will take prompt steps to address the inquiry.</p>
+        <p>If you believe that a minor has provided personal information to third-party SDKs through our application, please contact us at <a href="mailto:support@polyforge.app" style="color: var(--accent-color); font-weight: 600;">support@polyforge.app</a>, and we will take prompt steps to address the inquiry.</p>
     </section>
 
     <section id="section-17">
@@ -617,7 +635,7 @@
             <p><strong>Application:</strong> DocNextG</p>
             <p><strong>Package Name:</strong> <code>com.polyforge.magicpage</code></p>
             <p><strong>Developer / Publisher:</strong> PolyForge</p>
-            <p><strong>Developer Contact:</strong> Refer to the official developer contact details published on the Google Play Store application page.</p>
+            <p><strong>Support Email:</strong> <a href="mailto:support@polyforge.app" style="color: var(--accent-color); font-weight: 600;">support@polyforge.app</a></p>
             <p><strong>Official Policy URL:</strong> <a href="https://tyogamer37378.github.io/docnextg-privacy-policy/" style="color: var(--accent-color);">https://tyogamer37378.github.io/docnextg-privacy-policy/</a></p>
         </div>
     </section>
