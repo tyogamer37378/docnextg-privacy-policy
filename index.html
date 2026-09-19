@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — DocNextG</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
+            --border-color: #e2e8f0;
+            --card-border: #cbd5e1;
+            --success-color: #059669;
+            --success-light: #ecfdf5;
+            --warning-color: #d97706;
+            --warning-light: #fffbeb;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            --line-height: 1.65;
+            --max-width: 860px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0b0f17;
+                --surface-color: #111827;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-muted: #94a3b8;
+                --accent-color: #3b82f6;
+                --accent-hover: #60a5fa;
+                --accent-light: rgba(59, 130, 246, 0.12);
+                --border-color: #1e293b;
+                --card-border: #334155;
+                --success-color: #10b981;
+                --success-light: rgba(16, 185, 129, 0.12);
+                --warning-color: #f59e0b;
+                --warning-light: rgba(245, 158, 11, 0.12);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: var(--line-height);
+            padding: 24px 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px 8px;
+            }
+            .container {
+                padding: 24px 16px;
+                border-radius: var(--radius-md);
+            }
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        .meta-item strong {
+            color: var(--text-secondary);
+        }
+
+        .summary-box {
+            background-color: var(--accent-light);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid var(--accent-color);
+            border-radius: var(--radius-sm);
+            padding: 18px 20px;
+            margin-bottom: 32px;
+        }
+
+        .summary-box h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .summary-box p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .highlight-card {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            background: var(--surface-color);
+        }
+
+        .highlight-card.safe {
+            border-top: 3px solid var(--success-color);
+        }
+
+        .highlight-card.notice {
+            border-top: 3px solid var(--warning-color);
+        }
+
+        .highlight-card h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .highlight-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        nav.toc {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 36px;
+        }
+
+        nav.toc h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        nav.toc ol {
+            padding-left: 20px;
+            column-count: 2;
+            column-gap: 24px;
+        }
+
+        @media (max-width: 640px) {
+            nav.toc ol {
+                column-count: 1;
+            }
+        }
+
+        nav.toc li {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+        }
+
+        nav.toc a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        nav.toc a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 24px;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.015em;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 16px 0 8px 0;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 14px;
+        }
+
+        li {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        li strong {
+            color: var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin: 16px 0;
+            display: block;
+            overflow-x: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        th {
+            background-color: var(--bg-color);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        td {
+            color: var(--text-secondary);
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            font-size: 0.85em;
+            background-color: var(--bg-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .contact-card {
+            background-color: var(--accent-light);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .contact-card p {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="badge">Official Policy</div>
+        <h1>Privacy Policy for DocNextG</h1>
+        <div class="meta">
+            <div class="meta-item"><strong>Application:</strong> DocNextG</div>
+            <div class="meta-item"><strong>Package:</strong> <code>com.polyforge.magicpage</code></div>
+            <div class="meta-item"><strong>Effective Date:</strong> September 20, 2026</div>
+        </div>
+    </header>
+
+    <div class="summary-box">
+        <h3>Privacy Architecture Summary</h3>
+        <p>DocNextG is built around a private, <strong>on-device document processing model</strong>. All document scanning, camera frames, imported photos, optical character recognition (OCR), and PDF file operations take place locally on your Android device. The application does not upload your documents to any cloud servers. The only off-device network communication consists of operational diagnostics transmitted by bundled Google ML Kit client libraries to maintain SDK reliability.</p>
+    </div>
+
+    <div class="highlight-grid">
+        <div class="highlight-card safe">
+            <h4>100% On-Device Document Content</h4>
+            <p>Your document images, OCR extracted text, generated PDFs, and local backups are stored exclusively in app-private storage on your device. Zero document bytes are uploaded.</p>
+        </div>
+        <div class="highlight-card notice">
+            <h4>Disclosed SDK Telemetry</h4>
+            <p>Bundled Google ML Kit dependencies transmit technical SDK performance metrics, API execution latency, error codes, and device info to Google infrastructure.</p>
+        </div>
+        <div class="highlight-card safe">
+            <h4>No Accounts & No Ads</h4>
+            <p>DocNextG requires no login or user account. It contains zero advertising SDKs (No AdMob), no advertising tracking IDs, and no payment or billing SDKs.</p>
+        </div>
+    </div>
+
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#section-1">Introduction</a></li>
+            <li><a href="#section-2">Information Processed by DocNextG</a></li>
+            <li><a href="#section-3">Camera and Document Scanning</a></li>
+            <li><a href="#section-4">Imported Photos and Documents</a></li>
+            <li><a href="#section-5">Optical Character Recognition (OCR)</a></li>
+            <li><a href="#section-6">PDF Creation and Local Storage</a></li>
+            <li><a href="#section-7">QR Code and Barcode Processing</a></li>
+            <li><a href="#section-8">Local Backup and Restore</a></li>
+            <li><a href="#section-9">User-Initiated Sharing and Export</a></li>
+            <li><a href="#section-10">Google ML Kit SDK Diagnostics & Telemetry</a></li>
+            <li><a href="#section-11">Network Communications</a></li>
+            <li><a href="#section-12">Data Storage</a></li>
+            <li><a href="#section-13">Data Deletion</a></li>
+            <li><a href="#section-14">Security</a></li>
+            <li><a href="#section-15">Third-Party Services and SDKs</a></li>
+            <li><a href="#section-16">Children's Privacy</a></li>
+            <li><a href="#section-17">Changes to This Privacy Policy</a></li>
+            <li><a href="#section-18">Contact Information</a></li>
+        </ol>
+    </nav>
+
+    <section id="section-1">
+        <h2>1. Introduction</h2>
+        <p>This Privacy Policy explains how <strong>DocNextG</strong> (package name: <code>com.polyforge.magicpage</code>) processes, handles, and protects information when you use our mobile document scanning application on Android devices.</p>
+        <p>DocNextG is engineered with a strict on-device data processing philosophy. We believe that your sensitive documents, contracts, receipts, and personal files belong exclusively to you. We do not operate a cloud document processing infrastructure or remote storage servers for your files. This document details our data handling practices and openly discloses the technical operational telemetry transmitted by third-party SDK components bundled within the application.</p>
+    </section>
+
+    <section id="section-2">
+        <h2>2. Information Processed by DocNextG</h2>
+        <p>To deliver document scanning, text recognition, and PDF utility features, DocNextG processes information in two separate categories:</p>
+        <ul>
+            <li><strong>User Document Content (Processed & Stored 100% On-Device):</strong> Camera preview frames, captured document photos, gallery-imported images, perspective-cropped pages, extracted OCR text strings, generated PDF files, scanned QR/barcode payloads, Room SQLite database records (document titles, page counts, folder tags), and local backup archives (<code>.mpbak</code>).</li>
+            <li><strong>SDK Operational Telemetry (Transmitted Off-Device to Google):</strong> Technical performance data, API execution latency measurements, error codes, device hardware specifications (model, manufacturer), Android OS build version, application version code (<code>1</code>), and an ephemeral installation identifier (<code>instance_id</code>) generated by Google ML Kit client components.</li>
+        </ul>
+        <p>DocNextG does <strong>not</strong> require, collect, or store personal identity profiles, usernames, passwords, phone numbers, email contact lists, or physical addresses. The application contains no login or user account system.</p>
+    </section>
+
+    <section id="section-3">
+        <h2>3. Camera and Document Scanning</h2>
+        <p>DocNextG requests access to your device camera (<code>android.permission.CAMERA</code>) solely to capture document images and scan barcodes.</p>
+        <ul>
+            <li>Camera preview frames are analyzed in real time directly on your device using native OpenCV and Android Jetpack CameraX libraries for automated edge detection, document boundary alignment, and perspective correction.</li>
+            <li>Live camera frames remain transiently in memory and are discarded immediately upon frame processing.</li>
+            <li>An image is only saved to storage when you explicitly trigger the camera shutter or confirm an automated scan capture.</li>
+            <li>Camera captures and live viewfinder streams are <strong>never</strong> transmitted over the network by DocNextG.</li>
+        </ul>
+    </section>
+
+    <section id="section-4">
+        <h2>4. Imported Photos and Documents</h2>
+        <p>You may choose to import existing photographs from your device storage into DocNextG to create or supplement documents.</p>
+        <ul>
+            <li>DocNextG utilizes the modern Android system Photo Picker (<code>ActivityResultContracts.PickMultipleVisualMedia</code>). This system-managed dialog ensures that the application only accesses the specific images you explicitly select.</li>
+            <li>DocNextG does not declare broad storage permissions such as <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code>. It has no access to your broader photo gallery or personal files.</li>
+            <li>Selected images are read into memory and copied directly to the application's private internal storage directory (<code>context.filesDir/images/</code>). Imported photos are never uploaded or transmitted off your device.</li>
+        </ul>
+    </section>
+
+    <section id="section-5">
+        <h2>5. Optical Character Recognition (OCR)</h2>
+        <p>DocNextG provides on-device Optical Character Recognition (OCR) to recognize and extract text from scanned documents.</p>
+        <ul>
+            <li>OCR is powered by Google ML Kit's on-device text recognition library (<code>com.google.mlkit:text-recognition-chinese</code>, supporting Latin, Chinese, Japanese, and Korean character sets).</li>
+            <li>All text recognition models execute <strong>locally on your device hardware (CPU/GPU)</strong> using models bundled inside the application package.</li>
+            <li>Your document images and the recognized text are processed entirely on your device and are <strong>never uploaded to external servers</strong> for text recognition.</li>
+            <li>Extracted text is saved locally in the application's private SQLite database (<code>DocumentPageEntity.ocrText</code>) where you can edit it, copy it to your clipboard, or export it.</li>
+        </ul>
+    </section>
+
+    <section id="section-6">
+        <h2>6. PDF Creation and Local Storage</h2>
+        <p>DocNextG provides a comprehensive suite of PDF tools, including document generation, merging multiple PDFs, splitting pages, compression, and password protection.</p>
+        <ul>
+            <li>All PDF rendering and compilation execute locally using on-device PDF processing libraries (<code>PdfBox-Android</code> and Android's native <code>PdfDocument</code> APIs).</li>
+            <li>Generated PDFs and document thumbnails are stored in the application's private sandboxed internal directory (<code>context.filesDir</code> and <code>context.cacheDir</code>).</li>
+            <li>DocNextG does not provide or operate cloud document hosting, online synchronization, or remote document storage servers.</li>
+        </ul>
+    </section>
+
+    <section id="section-7">
+        <h2>7. QR Code and Barcode Processing</h2>
+        <p>DocNextG includes a QR code and barcode scanner powered by Google ML Kit's on-device barcode scanning library.</p>
+        <ul>
+            <li>Barcode pattern recognition and decoding execute locally on your device's camera preview frames.</li>
+            <li>Decoded content (such as plain text or numbers) is displayed on your screen. It is not saved to the database unless you explicitly save it as a document note.</li>
+            <li>If a scanned code contains an external web link, DocNextG sanitizes the URL through a strict scheme whitelist (allowing only <code>http://</code> and <code>https://</code>). The link is only opened in your device's default external browser if you explicitly tap to open it. DocNextG does not embed a web browser or track web browsing activity.</li>
+        </ul>
+    </section>
+
+    <section id="section-8">
+        <h2>8. Local Backup and Restore</h2>
+        <p>DocNextG provides a local disaster-recovery backup tool allowing you to pack your document library and database records into an archive file (<code>.mpbak</code> / ZIP format).</p>
+        <ul>
+            <li>Backup archive creation and extraction execute 100% locally on your device using standard compression libraries.</li>
+            <li>You control the destination of backup archives through Android's Storage Access Framework (SAF).</li>
+            <li><strong>No Cloud Sync:</strong> Backups stay strictly on your device. DocNextG does not operate automated cloud backup or Google Drive synchronization. To move an archive to another device or cloud drive, you must manually export or share the file yourself.</li>
+        </ul>
+    </section>
+
+    <section id="section-9">
+        <h2>9. User-Initiated Sharing and Export</h2>
+        <p>Your documents, images, and backup archives leave the application's private sandbox <strong>only when you explicitly trigger an export or share action</strong>.</p>
+        <ul>
+            <li>When you share a document or PDF, DocNextG invokes the Android system Sharesheet via a secure <code>FileProvider</code> configuration.</li>
+            <li><code>FileProvider</code> grants temporary, read-only content URI permissions strictly for the specific file you choose to share with the recipient application you select (such as an email app, cloud drive app, or messenger).</li>
+            <li>DocNextG has no control over how third-party recipient apps handle data after you transfer files to them.</li>
+        </ul>
+    </section>
+
+    <section id="section-10">
+        <h2>10. Google ML Kit SDK Diagnostics & Telemetry</h2>
+        <p>DocNextG integrates Google ML Kit client libraries to perform on-device text recognition and barcode scanning. These bundled libraries include Google's DataTransport subsystem (<code>transport-backend-cct</code>), which transmits technical operational telemetry to Google infrastructure (<code>play.googleapis.com</code>).</p>
+        
+        <h3>What Is Transmitted</h3>
+        <p>Independent bytecode analysis confirms that the data sent by the ML Kit telemetry transport is limited to technical diagnostic and operational metrics:</p>
+        <ul>
+            <li><strong>Diagnostic & Performance Metrics:</strong> Invocation counts, API execution duration (minimum, median, maximum latency), model load status, and technical error/status codes.</li>
+            <li><strong>Device & Application Metadata:</strong> Device hardware model, manufacturer, Android operating system build version, application version code (<code>1</code>), network connection type (Wi-Fi/cellular), and an anonymous per-installation UUID (<code>instance_id</code>).</li>
+        </ul>
+
+        <h3>What Is NOT Transmitted</h3>
+        <p><strong>Under no circumstances does this telemetry channel transmit document content.</strong> Independent audits of the application bytecode and network requests establish that:</p>
+        <ul>
+            <li>Zero document images or camera pixels are transmitted.</li>
+            <li>Zero extracted OCR text strings are transmitted.</li>
+            <li>Zero document filenames, titles, or tags are transmitted.</li>
+            <li>Zero QR code or barcode payload values are transmitted.</li>
+            <li>Zero user account credentials or personal contact details are transmitted.</li>
+        </ul>
+        <p>All telemetry data is transmitted using industry-standard encrypted network connections (HTTPS / TLS). Google processes this operational telemetry under standard Google API terms to monitor SDK performance, detect crashes, and maintain Google Play services reliability across Android devices.</p>
+    </section>
+
+    <section id="section-11">
+        <h2>11. Network Communications</h2>
+        <p>The compiled DocNextG release package includes <code>android.permission.INTERNET</code> and <code>android.permission.ACCESS_NETWORK_STATE</code> in its merged manifest, introduced by the bundled Google ML Kit client dependencies.</p>
+        <ul>
+            <li>Network socket communications are used solely for the transmission of the third-party ML Kit SDK diagnostic telemetry disclosed in Section 10.</li>
+            <li>DocNextG does <strong>not</strong> make network calls for document synchronization, user tracking, advertising, analytics profiling, or cloud computation.</li>
+            <li>All core document features—including camera capture, edge cropping, OCR text recognition, PDF generation, PDF merging, and local backup—function completely without an active internet connection.</li>
+        </ul>
+    </section>
+
+    <section id="section-12">
+        <h2>12. Data Storage</h2>
+        <p>All user document data, images, thumbnails, extracted text, and application settings are stored strictly in the private, sandboxed internal storage allocated to DocNextG by the Android operating system (<code>context.filesDir</code> and <code>context.cacheDir</code>).</p>
+        <p>Under Android's security architecture, sandboxed storage is isolated from other applications on the device. Other apps cannot read or access DocNextG files without your explicit user action through the system Sharesheet or Storage Access Framework.</p>
+    </section>
+
+    <section id="section-13">
+        <h2>13. Data Deletion</h2>
+        <p>DocNextG provides users with complete, immediate control over local data:</p>
+        <ul>
+            <li><strong>In-App Deletion:</strong> You can permanently delete individual document pages, multi-page documents, or folders at any time directly within the application. When deleted, files are removed from the filesystem and database.</li>
+            <li><strong>Application Data Clearing & Uninstall:</strong> Clearing application storage via Android system settings (<code>Settings &gt; Apps &gt; DocNextG &gt; Storage &gt; Clear Storage / Clear Data</code>) or uninstalling the app permanently purges all stored documents, images, database records, and settings from your device.</li>
+            <li><strong>Telemetry Data:</strong> Operational SDK telemetry transmitted to Google is aggregated, technical, and not tied to user accounts. Because the application maintains no user profiles or identity mappings, DocNextG does not maintain an independent deletion portal for aggregated technical SDK telemetry logs held on Google infrastructure.</li>
+        </ul>
+    </section>
+
+    <section id="section-14">
+        <h2>14. Security</h2>
+        <p>We are committed to protecting your data through defensive engineering practices:</p>
+        <ul>
+            <li><strong>Path Traversal Guards:</strong> Backup archive extraction strictly validates relative file paths to prevent directory traversal vulnerabilities (Zip Slip).</li>
+            <li><strong>Decompression Safeguards:</strong> Hard thresholds on archive size, entry counts, and decompressed bytes prevent Zip Bomb denial-of-service risks.</li>
+            <li><strong>Scoped Content Sharing:</strong> File sharing is restricted strictly to designated export subdirectories via Android's <code>FileProvider</code>, preventing exposure of internal database records.</li>
+            <li><strong>Safe URL Whitelisting:</strong> Scanned QR code payloads are validated to allow only standard <code>http</code> and <code>https</code> web links, blocking arbitrary intent or script execution.</li>
+            <li><strong>Encrypted Transport:</strong> All SDK telemetry communications utilize HTTPS/TLS encryption in transit.</li>
+        </ul>
+    </section>
+
+    <section id="section-15">
+        <h2>15. Third-Party Services and SDKs</h2>
+        <p>The DocNextG release package bundles the following third-party software libraries:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Library / SDK</th>
+                    <th>Provider</th>
+                    <th>Purpose</th>
+                    <th>Data Handling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Google ML Kit</strong></td>
+                    <td>Google LLC</td>
+                    <td>On-device OCR and Barcode Scanning</td>
+                    <td>Processes document images locally on-device. Transmits technical operational diagnostics and device metadata as described in Section 10.</td>
+                </tr>
+                <tr>
+                    <td><strong>OpenCV Android SDK</strong></td>
+                    <td>OpenCV Team</td>
+                    <td>Document edge detection & perspective crop</td>
+                    <td>Operates 100% on-device CPU/GPU. Zero network communication.</td>
+                </tr>
+                <tr>
+                    <td><strong>PdfBox-Android</strong></td>
+                    <td>Tom Roush / Apache</td>
+                    <td>PDF document generation and manipulation</td>
+                    <td>Operates 100% on-device. Zero network communication.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Excluded Services:</strong> DocNextG does <strong>not</strong> integrate Google Analytics, Firebase Analytics, Crashlytics, Google AdMob, RevenueCat, Facebook Audience Network, or any advertising or third-party profiling trackers.</p>
+    </section>
+
+    <section id="section-16">
+        <h2>16. Children's Privacy</h2>
+        <p>DocNextG is a general-purpose productivity document utility designed for general audiences. The application does not knowingly collect personal information from children under the age of 13. All document processing takes place locally on the user's device, and the application does not create user profiles or require registration.</p>
+    </section>
+
+    <section id="section-17">
+        <h2>17. Changes to This Privacy Policy</h2>
+        <p>We may periodically update this Privacy Policy to reflect changes in our application features, underlying SDK components, or applicable legal and regulatory standards. When changes are made, the updated policy will be published on this page with a revised "Effective Date" at the top.</p>
+    </section>
+
+    <section id="section-18">
+        <h2>18. Contact Information</h2>
+        <p>If you have questions, inquiries, or feedback concerning this Privacy Policy or DocNextG's data handling practices, please contact us:</p>
+        <div class="contact-card">
+            <p><strong>Application:</strong> DocNextG</p>
+            <p><strong>Package Name:</strong> <code>com.polyforge.magicpage</code></p>
+            <p><strong>Support Email:</strong> <a href="mailto:support@polyforge.app" style="color: var(--accent-color); font-weight: 600;">support@polyforge.app</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 PolyForge / DocNextG. All rights reserved.</p>
+        <p style="margin-top: 4px; font-size: 0.8rem;">This privacy policy is published for DocNextG (<code>com.polyforge.magicpage</code>).</p>
+    </footer>
+</div>
+
+</body>
+</html>
